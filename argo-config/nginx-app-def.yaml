@@ -7,9 +7,9 @@ metadata:
     app-type: nginx-endpoint
 spec:
   destination:
-    namespace: bookinfo-development
+    namespace: nginx-endpoint
     server: https://kubernetes.default.svc
-  project: bookinfo-project-dev
+  project: nginx-project
   source:
     path: development/helm-config/
     repoURL: https://github.com/glaceroy/nginx-argocd
