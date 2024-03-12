@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-endpoint
+  namespace: argocd
+  labels:
+    app-type: nginx-endpoint
+spec:
+  destination:
+    namespace: bookinfo-development
+    server: https://kubernetes.default.svc
+  project: bookinfo-project-dev
+  source:
+    path: development/helm-config/
+    repoURL: https://github.com/glaceroy/nginx-argocd
+    targetRevision: HEAD
+    helm:
+      version: v3
+      valuesFile:
+        - helm-config/values.yaml
+  info:
+    - name: 'Purpose'
+      value: 'Application to act as external endpoint'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - PruneLast=true
+    - CreateNamespace=true
