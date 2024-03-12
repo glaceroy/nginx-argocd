@@ -17,9 +17,15 @@ serviceAccount:
   create: true
   name: nginx-sa
 
-service:
-  type: ClusterIP
-  port: 80
+ports:
+- name: http
+  port: 8080
+  targetPort: 8080
+  protocol: TCP
+- name: https
+  port: 8443
+  targetPort: 8443
+  protocol: TCP
 
 resources:
   limits:
