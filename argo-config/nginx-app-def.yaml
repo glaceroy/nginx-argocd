@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: nginx-project
   source:
-    path: development/helm-config/
+    path: helm-config/
     repoURL: https://github.com/glaceroy/nginx-argocd
     targetRevision: HEAD
     helm:
